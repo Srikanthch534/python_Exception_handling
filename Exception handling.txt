@@ -1,0 +1,874 @@
+
+An exception can be defined as an unusual condition in a program resulting in the interruption in the flow of the program.
+
+Whenever an exception occurs, the program stops the execution, and thus the further code is not executed. Therefore, an exception is the run-time errors that are unable to handle to Python script. An exception is a Python object that represents an error
+
+Python provides a way to handle the exception so that the code can be executed without any interruption. If we do not handle the exception, the interpreter doesn't execute all the code that exists after the exception.
+
+Common Exceptions
+Python provides the number of built-in exceptions, but here we are describing the common standard exceptions. A list of common exceptions that can be thrown from a standard Python program is given below.
+
+1.ZeroDivisionError: Occurs when a number is divided by zero.
+2.NameError: It occurs when a name is not found. It may be local or global.
+3.IndentationError: If incorrect indentation is given.
+4.IOError: It occurs when Input Output operation fails.
+5.EOFError: It occurs when the end of the file is reached, and yet operations are being performed.
+
+
+
+
+
+
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan  9 10:40:34 2022
+
+@author: pc
+"""
+
+#Exception handling
+'''
+Errors:problems in the program
+
+try clause:
+    1.First try clause will execute
+    2.if there is any exception in the try clause ,exception clause will execute
+    3.program stops if you don't handle exception using except clause
+    4.try can have more than one except clause
+    5.lets handle our exception using try except
+    
+Exception:NO problem in the syntax(syntacticaly correct) but there is a problem in the code 
+
+else clause:
+    1.we can have an else clause for try except
+    2.it should be placed after all the except   clauses
+    3.if there is no exception then else clause will call
+    
+finally:
+    always executed after try and except clauses
+
+
+syntax errors:
+    1.syntax mistakes
+    2.it is easily identified by the interpreter
+    3.occurs before runtime
+    
+exception errors:
+    1.logical mistakes
+    2.Is not identified by the interpreter
+    3.occurs during runtime
+    
+    
+'''
+
+
+#ex-1:
+    
+print('Secure connection has been established to bank server') 
+try:
+    p=int(input('Enter your principal amount:'))
+    t=int(input('Enter the duration'))
+    r=10
+except:
+    print('please provide a numerical value') 
+    
+else:
+    si=(p*t*r)/100
+    print('simple intrest',si)
+
+print('Secure connection has been closed to the bank server')    
+
+
+output-1:
+Secure connection has been established to bank server
+
+Enter your principal amount100
+
+Enter the duration2
+simple intrest 20.0
+Secure connection has been closed to the bank server
+
+output-2:
+Secure connection has been established to bank server
+
+Enter your principal amount:ten
+please provide a numerical value
+Secure connection has been closed to the bank server
+
+
+
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan  9 11:22:03 2022
+
+@author: pc
+"""
+'''
+print('execution started normally')
+lst=[10,20,0,30,60]
+d={1:'c',2:'java',3:'python',4:'c++'}
+try:
+    r=int(input('enter the rank of the languagee:\n'))
+    print(d[r])
+    num=int(input('enter the index of the numerator'))
+    den=int(input('enter the index of th denominator'))
+    print(lst[num]/lst[den])
+    
+except:
+    print('hey there was an issue')
+
+print('execution terminated normally')    
+'''
+
+'''
+output-1:
+execution started normally
+
+enter the rank of the languagee:
+1
+c
+
+enter the index of the numerator0
+
+enter the index of th denominator3
+0.3333333333333333
+execution terminated normally
+
+output-2:
+
+execution started normally
+
+enter the rank of the languagee:
+4
+c++
+
+enter the index of the numerator3
+
+enter the index of th denominator2
+hey there was an issue
+execution terminated normally
+
+
+output-3:
+execution started normally
+
+enter the rank of the languagee:
+6
+hey there was an issue
+execution terminated normally
+'''
+
+
+'''
+print('execution started normally')
+lst=[10,20,0,30,60]
+d={1:'c',2:'java',3:'python',4:'c++'}
+try:
+    r=int(input('enter the rank of the languagee:\n'))
+    print(d[r])
+    num=int(input('enter the index of the numerator'))
+    den=int(input('enter the index of th denominator'))
+    print(lst[num]/lst[den])
+    
+except KeyError:
+    print('key does not exist')
+
+except IndexError:
+    print('index out of bounds') 
+    
+except ZeroDivisionError:
+    print('division by zero')
+
+except:
+    print('hey some issue occured')
+
+print('execution teriminated normally')
+'''  
+
+'''
+
+
+execution started normally
+
+enter the rank of the languagee:
+five
+hey some issue occured
+execution teriminated normally
+
+
+
+execution started normally
+
+enter the rank of the languagee:
+5
+key does not exist
+execution teriminated normally
+
+
+execution started normally
+
+enter the rank of the languagee:
+3
+python
+
+enter the index of the numerator5
+
+enter the index of th denominator1
+index out of bounds
+execution teriminated normally
+
+
+
+execution started normally
+
+enter the rank of the languagee:
+2
+java
+
+enter the index of the numerator2
+
+enter the index of th denominator2
+division by zero
+execution teriminated normally
+'''
+
+
+'''
+print('execution started normally')
+lst=[10,20,0,30,60]
+d={1:'c',2:'java',3:'python',4:'c++'}
+try:
+    r=int(input('enter the rank of the languagee:\n'))
+    print(d[r])
+    num=int(input('enter the index of the numerator'))
+    den=int(input('enter the index of th denominator'))
+    print(lst[num]/lst[den])
+    
+except KeyError as e:
+    print(e)
+
+except IndexError as e:
+    print(e)
+    
+except ZeroDivisionError as e:
+    print(e)
+
+except Exception as e:
+    print(e)
+
+print('execution teriminated normally')
+
+'''
+'''
+execution started normally
+
+enter the rank of the languagee:
+5
+5
+execution teriminated normally
+
+execution started normally
+
+enter the rank of the languagee:
+2
+java
+
+enter the index of the numerator5
+
+enter the index of th denominator2
+list index out of range
+execution teriminated normally
+
+
+
+
+execution started normally
+
+enter the rank of the languagee:
+2
+java
+
+enter the index of the numerator2
+
+enter the index of th denominator2
+division by zero
+execution teriminated normally
+
+
+execution started normally
+
+enter the rank of the languagee:
+five
+invalid literal for int() with base 10: 'five'
+execution teriminated normally
+
+
+'''
+    
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan  9 13:11:16 2022
+
+@author: pc
+"""
+
+'''
+#traceback
+def fun2():
+    print('fun2() started execution')
+    num=int(input('enter the numerator'))
+    den=int(input('enter the denominator'))
+    res=num/den
+    print(res)
+    print('fun2() finished execution normally')
+    
+def fun1():
+    print('fun1() started execution')
+    fun2()
+    print('fun()1 finished  execution normally') 
+    
+ 
+def main():
+    print('main() started execution')
+    fun1()
+    print('main() finished execution normally')
+
+
+main()    
+
+
+
+
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan  9 13:26:51 2022
+
+@author: pc
+"""
+
+'''
+def fun2():
+    print('fun2() started execution')
+    try:
+        num=int(input('enter the numerator'))
+        den=int(input('enter the denominator'))
+        res=num/den
+        print(res)
+    except ZeroDivisionError:
+        print('fun2() finished execution normally')
+    
+def fun1():
+    print('fun1() started execution')
+    fun2()
+    print('fun()1 finished  execution normally') 
+    
+ 
+def main():
+    print('main() started execution')
+    fun1()
+    print('main() finished execution normally')
+
+
+main()  
+
+
+main() started execution
+fun1() started execution
+fun2() started execution
+
+enter the numerator5
+
+enter the denominator0
+ecception handled in fun2()
+fun2() finished execution normally
+fun()1 finished  execution normally
+main() finished execution normally
+
+'''
+
+
+
+'''
+def fun2():
+    print('fun2() started execution')
+    num=int(input('enter the numerator'))
+    den=int(input('enter the denominator'))
+    res=num/den
+    print(res)
+    print('fun2() finished execution normally')
+    
+def fun1():
+    print('fun1() started execution')
+    try:
+        fun2()
+    except ZeroDivisionError:
+        print('exception handled in fun1()')
+    print('fun()1 finished  execution normally') 
+    
+ 
+def main():
+    print('main() started execution')
+    fun1()
+    print('main() finished execution normally')
+
+
+main()    
+
+
+main() started execution
+fun1() started execution
+fun2() started execution
+
+enter the numerator5
+
+enter the denominator0
+exception handled in fun1()
+fun()1 finished  execution normally
+main() finished execution normally
+
+
+'''
+
+'''
+def fun2():
+    print('fun2() started execution')
+    num=int(input('enter the numerator'))
+    den=int(input('enter the denominator'))
+    res=num/den
+    print(res)
+    print('fun2() finished execution normally')
+    
+def fun1():
+    print('fun1() started execution')
+    fun2()
+    print('fun()1 finished  execution normally') 
+    
+ 
+def main():
+    print('main() started execution')
+    try:
+        fun1()
+    except ZeroDivisionError:
+        print('exception handled in main()')
+    print('main() finished execution normally')
+
+
+main()    
+
+
+
+main() started execution
+fun1() started execution
+fun2() started execution
+
+enter the numerator3
+
+enter the denominator0
+exception handled in main()
+main() finished execution normally
+'''
+
+
+main() started execution
+fun1() started execution
+fun2() started execution
+
+
+
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan  9 16:06:13 2022
+
+@author: pc
+"""
+'''
+#Exception handling keywords
+1.try
+2.except
+3.else
+4.raise
+5.finally
+'''
+
+
+'''
+def validate(mob):
+    if len(mob)==10:
+        print('valid mobile number')
+        
+    else:
+        raise ValueError
+        
+def main():
+    mob=input()
+    validate(mob) 
+
+main()       
+
+
+9898
+Traceback (most recent call last):
+
+  File "C:\Users\pc\untitled1.py", line 26, in <module>
+    main()
+
+  File "C:\Users\pc\untitled1.py", line 24, in main
+    validate(mob)
+
+  File "C:\Users\pc\untitled1.py", line 20, in validate
+    raise ValueError
+
+ValueError
+
+
+
+enter the numerator1
+
+enter the denominator0
+Traceback (most recent call last):
+
+  File "C:\Users\pc\untitled3.py", line 28, in <module>
+    main()
+
+  File "C:\Users\pc\untitled3.py", line 24, in main
+    fun1()
+
+  File "C:\Users\pc\untitled3.py", line 18, in fun1
+    fun2()
+
+  File "C:\Users\pc\untitled3.py", line 12, in fun2
+    res=num/den
+
+ZeroDivisionError: division by zero
+
+'''    
+
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan  9 16:11:00 2022
+
+@author: pc
+"""
+'''
+def validate(mob):
+    if len(mob)==10:
+        print('valid mobile number')
+        
+    else:
+        raise ValueError
+        
+def main():
+    mob=input()
+    validate(mob) 
+
+main()       
+
+
+9988888888
+valid mobile number
+'''
+
+
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan  9 16:11:54 2022
+
+@author: pc
+"""
+
+
+'''
+def menu(item):
+    if item =='pizza':
+        print('enjoy your pizza')
+        
+    elif item =='idli':
+        print('enjoy your idli')
+    elif item == 'burger':
+        print('enjoy your burger')
+        
+    else:
+        raise NameError
+        
+def main():
+    item=input()
+    menu(item)
+main()        
+
+pizza
+enjoy your pizza
+
+'''
+
+
+'''
+def menu(item):
+    if item =='pizza':
+        print('enjoy your pizza')
+        
+    elif item =='idli':
+        print('enjoy your idli')
+    elif item == 'burger':
+        print('enjoy your burger')
+        
+    else:
+        raise NameError
+        
+def main():
+    item=input()
+    menu(item)
+main()        
+
+
+ok
+Traceback (most recent call last):
+
+  File "C:\Users\pc\untitled3.py", line 46, in <module>
+    main()
+
+  File "C:\Users\pc\untitled3.py", line 45, in main
+    menu(item)
+
+  File "C:\Users\pc\untitled3.py", line 41, in menu
+    raise NameError
+
+NameError
+
+
+
+'''
+
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan  9 16:17:58 2022
+
+@author: pc
+"""
+'''
+
+def fun():
+    print('fun() started execution')
+    try:
+        num=int(input('Enter the numerator:'))
+        den=int(input('Enter the denominator:'))
+        res=num/den
+        print(res)
+    except ZeroDivisionError as e:
+       print('exception handled in fun()')
+       raise e
+    finally:
+       print('fun() finisshed exceution normally')
+       
+def main():
+    print('main() started execution')
+    try:
+        fun()
+    except:
+        print('exception in main()')
+        
+        
+main()        
+       
+main() started execution
+fun() started execution
+
+Enter the numerator:5
+
+Enter the denominator:0
+exception handled in fun()
+fun() finisshed exceution normally
+exception in main()    
+
+
+
+def fun(x):
+    try:
+        res=100/x
+        print('inside try')
+        
+    except:
+        print('inside except')
+        
+    else:
+        print('inside else')
+        
+    finally:
+        print('inside finally')
+        
+        
+def main():
+    x=int(input('enter x:'))
+    fun(x)   
+
+
+main()     
+
+
+enter x:2
+inside try
+inside else
+inside finally
+
+enter x:0
+inside except
+inside finally
+
+'''
+
+
+#custom exceptions
+
+def validate(mob):
+    if len(mob)==10:
+        print('valid mobile number')
+        
+    else:
+        raise ValueError
+        
+def main():
+    mob=input()
+    validate(mob)
+main()        
+
+45544
+Traceback (most recent call last):
+
+  File "C:\Users\pc\untitled5.py", line 20, in <module>
+    main()
+
+  File "C:\Users\pc\untitled5.py", line 19, in main
+    validate(mob)
+
+  File "C:\Users\pc\untitled5.py", line 15, in validate
+    raise ValueError
+
+ValueError
+
+
+
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan  9 18:52:39 2022
+
+@author: pc
+"""
+
+
+class InvalidMobileNumberError(Exception):
+    pass
+
+
+def validate(mob):
+    if len(mob)==10:
+        print('valid mobile number')
+        
+    else:
+        raise ValueError('enter 10 digit number')
+        
+def main():
+    mob=input()
+    validate(mob)
+main()  
+
+
+
+787
+Traceback (most recent call last):
+
+  File "C:\Users\pc\untitled6.py", line 23, in <module>
+    main()
+
+  File "C:\Users\pc\untitled6.py", line 22, in main
+    validate(mob)
+
+  File "C:\Users\pc\untitled6.py", line 18, in validate
+    raise ValueError('enter 10 digit number')
+
+ValueError: enter 10 digit number
+
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan  9 18:53:41 2022
+
+@author: pc
+"""
+
+def menu(item):
+    if item == 'pizza':
+        print('enjoy your pizza')
+        
+    elif item == 'idli':
+        print('enjoy your idli')
+        
+    elif item == 'burger':
+        print('enjoy your burger')
+        
+    else:
+        raise NameError
+
+def main():
+    item = input()
+    menu(item)        
+        
+    
+main()    
+        
+
+puf
+Traceback (most recent call last):
+
+  File "C:\Users\pc\untitled7.py", line 26, in <module>
+    main()
+
+  File "C:\Users\pc\untitled7.py", line 23, in main
+    menu(item)
+
+  File "C:\Users\pc\untitled7.py", line 19, in menu
+    raise NameError
+
+NameError
+
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan  9 18:57:30 2022
+
+@author: pc
+"""
+
+class ItemInMenuError(Exception):
+    pass
+
+def menu(item):
+    if item == 'pizza':
+        print('enjoy your pizza')
+        
+    elif item == 'idli':
+        print('enjoy your idli')
+        
+    elif item == 'burger':
+        print('enjoy your burger')
+        
+    else:
+        raise NameError('item not present in menu')
+
+def main():
+    item = input()
+    menu(item)        
+        
+    
+main()    
+
+bun
+Traceback (most recent call last):
+
+  File "C:\Users\pc\untitled8.py", line 29, in <module>
+    main()
+
+  File "C:\Users\pc\untitled8.py", line 26, in main
+    menu(item)
+
+  File "C:\Users\pc\untitled8.py", line 22, in menu
+    raise NameError('item not present in menu')
+
+NameError: item not present in menu
+
